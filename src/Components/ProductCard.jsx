@@ -1,6 +1,6 @@
 import React from "react";
 
-const Product = ({ product }) => {
+const ProductCard = ({ product }) => {
   const { name, image, price, category } = product;
   return (
     <div className="card bg-base-100 border shadow-sm hover:scale-105 transition ease-in-out">
@@ -12,11 +12,11 @@ const Product = ({ product }) => {
         <p>Price: ${price}</p>
         <p>Category: {category}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary">View Details</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Product;
+export default ProductCard;

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
-import Product from "../Components/Product";
+import ProductCard from "../Components/ProductCard";
 import useProducts from "../Hooks/useProducts";
 
 const Home = () => {
-
   const { products, loading, error } = useProducts();
   const featuredProducts = products.slice(0, 6);
   return (
@@ -17,7 +16,7 @@ const Home = () => {
       </div>
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {featuredProducts.map((product) => (
-          <Product key={product.id} product={product}></Product>
+          <ProductCard key={product.id} product={product}></ProductCard>
         ))}
       </div>
     </div>
