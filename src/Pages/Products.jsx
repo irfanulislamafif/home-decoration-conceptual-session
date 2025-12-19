@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import useProducts from "../Hooks/useProducts";
 import ProductCard from "../Components/ProductCard";
 import { Link } from "react-router";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 const Products = () => {
   const [search, setSearch] = useState("");
-  const { products } = useProducts();
+  const { products,loading } = useProducts();
   const term = search.trim().toLocaleLowerCase();
   const searchedProducts = term
     ? products.filter((product) => product.name.toLowerCase().includes(term))
@@ -29,11 +30,15 @@ const Products = () => {
           />
         </label>
       </div>
-      <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {searchedProducts.map((product) => (
-          <ProductCard key={product.id} product={product}></ProductCard>
-        ))}
-      </div>
+      {loading ? (
+      <LoadingSpinner count="16"></LoadingSpinner>
+      ) : (
+        <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {searchedProducts.map((product) => (
+            <ProductCard key={product.id} product={product}></ProductCard>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
